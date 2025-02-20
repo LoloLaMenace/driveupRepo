@@ -21,7 +21,7 @@ class Critair extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'number';
 
     /**
      * The columns that should be searched.
