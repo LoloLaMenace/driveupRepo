@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class TireType extends Model
 {
-    /** @use HasFactory<\Database\Factories\CompanyFactory> */
+    /** @use HasFactory<\Database\Factories\TireTypeFactory> */
     use HasFactory;
 
     public function vehicles(): \Illuminate\Database\Eloquent\Relations\HasMany

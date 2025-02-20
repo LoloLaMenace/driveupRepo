@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Critair extends Model
 {
-    /** @use HasFactory<\Database\Factories\CompanyFactory> */
+    /** @use HasFactory<\Database\Factories\CritairFactory> */
     use HasFactory;
 
     public function vehicles(): \Illuminate\Database\Eloquent\Relations\HasMany
@@ -15,3 +15,4 @@ class Company extends Model
         return $this->hasMany(Vehicle::class);
     }
 }
+

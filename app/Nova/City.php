@@ -2,29 +2,27 @@
 
 namespace App\Nova;
 
-use Faker\Provider\Text;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class VehicleModel extends Resource
+class City extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\VehicleModel>
+     * @var class-string<\App\Models\City>
      */
-    public static $model = \App\Models\VehicleModel::class;
+    public static $model = \App\Models\City::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -44,10 +42,9 @@ class VehicleModel extends Resource
     {
         return [
             ID::make()->sortable(),
-            \Laravel\Nova\Fields\Text::make('name')->sortable(),
-            BelongsTo::make(__('Brand'), 'brand', Brand::class),
-            HasMany::make(__('Vehicles'), 'vehicles', Vehicle::class),
-            BelongsTo::make(__('Type'), 'vehicleType', VehicleType::class),
+            Text::make('Name')->sortable(),
+            HasMany::make('Vehicles', 'vehicles', Vehicle::class),
+            HasMany::make(__('Duplicate key'), 'duplicateKeyVehicle', Vehicle::class),
         ];
     }
 

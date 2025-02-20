@@ -10,7 +10,7 @@ class City extends Model
     /** @use HasFactory<\Database\Factories\CityFactory> */
     use HasFactory;
 
-    public function vehicle(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function vehicles(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(vehicle::class, 'location_city_id', 'id');
     }

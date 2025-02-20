@@ -2,22 +2,22 @@
 
 namespace Database\Factories;
 
-use App\Models\Energy;
+use App\Models\Critair;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @template TModel of \App\Models\Energy
+ * @template TModel of \App\Models\Critair
  *
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<TModel>
  */
-class EnergyFactory extends Factory
+class CritairFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var class-string<TModel>
      */
-    protected $model = Energy::class;
+    protected $model = Critair::class;
 
     /**
      * Define the model's default state.
@@ -27,7 +27,7 @@ class EnergyFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => faker()->name()
+            'number' => faker()->number(0, 5)
         ];
     }
 }

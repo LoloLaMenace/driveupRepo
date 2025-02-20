@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        \App\Models\Brand::factory()->count(10)
+        \App\Models\Brand::factory()->count(3)
             ->has(
-                \App\Models\VehicleModel::factory()->count(10)
+                \App\Models\VehicleModel::factory()->count(5)
                     ->has(
-                        Vehicle::factory()->count(10)
+                        Vehicle::factory()->count(5)
                     ),
                 'models'
             )

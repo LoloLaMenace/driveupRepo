@@ -2,9 +2,12 @@
 
 namespace App\Nova;
 
-use Faker\Provider\Text;
+use App\Models\Energy;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Tabs\Tab;
 
@@ -49,9 +52,20 @@ class Vehicle extends Resource
             Tab::group('Detail', [
                 Tab::make('Vehicle Details',[
                     ID::make()->sortable(),
-                    \Laravel\Nova\Fields\Text::make(__('Registration'), 'registration')->sortable(),
+                    Text::make(__('Registration'), 'registration')->sortable(),
                     BelongsTo::make(__('Vehicle Model'), 'model', VehicleModel::class),
                     BelongsTo::make(__('Status'), 'status', Status::class),
+                    BelongsTo::make(__('Billing Address'), 'company', Company::class),
+                    BelongsTo::make(__('Location vehicle'), 'locationCity', City::class),
+                    BelongsTo::make(__('Duplicate key'),'locationDoubleKeyCity', City::class),
+                    Text::make(__('Chassis number'), 'chassis_number')->sortable(),
+                    Text::make(__('Last mileage'), 'mileage')->sortable(),
+                    Date::make(__('Last statement'), 'last_statement')->sortable(),
+                    BelongsTo::make(__('Energy'), 'energy', \App\Nova\Energy::class),
+                    Number::make(__('CO2'), 'co2_emission')->sortable(),
+                    BelongsTo::make(__('Tire type'), 'tireType', TireType::class),
+                    BelongsTo::make(__('Critair'), 'critair', Critair::class),
+                    BelongsTo::make(__('Flocking'), 'flocking', Flocking::class),
                 ]),
             ]),
         ];

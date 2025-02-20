@@ -1,7 +1,11 @@
 <?php
 
 use App\Models\City;
+use App\Models\Company;
+use App\Models\Critair;
 use App\Models\Energy;
+use App\Models\Flocking;
+use App\Models\TireType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,15 +24,17 @@ return new class extends Migration
             $table->string('chassis_number', 17)->unique();
             $table->unsignedInteger('contract_mileage');
             $table->unsignedInteger('mileage');
+            $table->date('last_statement');
+            $table->integer('co2_emission');
             $table->foreignIdFor(\App\Models\VehicleModel::class,)->constrained();
             $table->foreignIdFor(\App\Models\Status::class)->constrained();
             $table->foreignIdFor(City::class, 'location_city_id')->constrained();
             $table->foreignIdFor(City::class, 'location_duplicate_key_city_id')->constrained();
-            $table->foreignIdFor(\App\Models\Company::class)->constrained();
+            $table->foreignIdFor(Company::class)->constrained();
             $table->foreignIdFor(Energy::class,)->constrained();
-
-
-
+            $table->foreignIdFor(TireType::class,)->constrained();
+            $table->foreignIdFor(Critair::class,)->constrained();
+            $table->foreignIdFor(Flocking::class,)->constrained();
         });
     }
 

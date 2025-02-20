@@ -2,15 +2,23 @@
 
 namespace Database\Factories;
 
-use App\Models\Brand;
 use App\Models\VehicleType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\VehicleModel>
+ * @template TModel of \App\Models\VehicleType
+ *
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<TModel>
  */
-class VehicleModelFactory extends Factory
+class VehicleTypeFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<TModel>
+     */
+    protected $model = VehicleType::class;
+
     /**
      * Define the model's default state.
      *
@@ -20,8 +28,6 @@ class VehicleModelFactory extends Factory
     {
         return [
             'name' => faker()->name(),
-            'brand_id' => Brand::factory(),
-            'vehicle_type_id' => VehicleType::factory(),
         ];
     }
 }

@@ -10,6 +10,12 @@ class Vehicle extends Model
 {
     use HasFactory;
 
+    public function casts(): array
+    {
+        return [
+            'last_statement' => 'datetime:Y-m-d',
+        ];
+    }
     public function model(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(VehicleModel::class, 'vehicle_model_id');
@@ -38,5 +44,20 @@ class Vehicle extends Model
     public function energy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Energy::class, 'energy_id');
+    }
+
+    public function tireType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(TireType::class, 'tire_type_id');
+    }
+
+    public function critair(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Critair::class, 'critair_id');
+    }
+
+    public function flocking(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Flocking::class, 'flocking_id');
     }
 }
