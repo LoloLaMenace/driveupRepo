@@ -3,6 +3,7 @@
 use App\Models\City;
 use App\Models\Company;
 use App\Models\Critair;
+use App\Models\Driver;
 use App\Models\Energy;
 use App\Models\Flocking;
 use App\Models\TireType;
@@ -35,6 +36,7 @@ return new class extends Migration
             $table->foreignIdFor(TireType::class,)->constrained();
             $table->foreignIdFor(Critair::class,)->constrained();
             $table->foreignIdFor(Flocking::class,)->constrained();
+            $table->foreignIdFor(Driver::class,)->constrained();
         });
     }
 

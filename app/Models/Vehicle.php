@@ -60,4 +60,9 @@ class Vehicle extends Model
     {
         return $this->belongsTo(Flocking::class, 'flocking_id');
     }
+
+    public function driver(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Driver::class);
+    }
 }

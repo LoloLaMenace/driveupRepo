@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\User;
 use App\Nova\Brand;
 use App\Nova\Dashboards\Main;
+use App\Nova\Driver;
 use App\Nova\Vehicle;
 use App\Nova\VehicleModel;
 use Illuminate\Http\Request;
@@ -27,10 +28,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
         Nova::mainMenu(function (Request $request) {
             return [
-                MenuSection::dashboard(Main::class)->icon('chart-bar'),
+                MenuSection::dashboard(Main::class)->icon('arrow-trending-up'),
 
                 MenuSection::resource(Vehicle::class)
                     ->icon('truck'),
+
+                MenuSection::resource(Driver::class)
+                    ->icon('identification'),
 
                 MenuSection::resource(\App\Nova\User::class)
                     ->icon('user'),

@@ -5,6 +5,7 @@ namespace App\Nova;
 use App\Models\Energy;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -33,8 +34,12 @@ class Vehicle extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'registration'
     ];
+
+    public static $perPageOptions = [10, 20, 50];
+
+//    public static $tableStyle = 'hight';
 
     /**
      * Get the fields displayed by the resource.
@@ -66,6 +71,7 @@ class Vehicle extends Resource
                     BelongsTo::make(__('Tire type'), 'tireType', TireType::class),
                     BelongsTo::make(__('Critair'), 'critair', Critair::class),
                     BelongsTo::make(__('Flocking'), 'flocking', Flocking::class),
+                    HasOne::make(__('Driver'), 'driver', Driver::class),
                 ]),
             ]),
         ];

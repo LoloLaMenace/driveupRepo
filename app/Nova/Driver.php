@@ -3,19 +3,19 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class VehicleType extends Resource
+class Driver extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\VehicleType>
+     * @var class-string<\App\Models\Driver>
      */
-    public static $model = \App\Models\VehicleType::class;
+    public static $model = \App\Models\Driver::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -30,7 +30,7 @@ class VehicleType extends Resource
      * @var array
      */
     public static $search = [
-        'name',
+        'id',
     ];
 
     /**
@@ -43,7 +43,7 @@ class VehicleType extends Resource
         return [
             ID::make()->sortable(),
             Text::make('name')->sortable(),
-            HasMany::make(__('vehicles models'), 'vehiclesModel', VehicleModel::class),
+            BelongsTo::make(__('Vehicle'), 'vehicle', Vehicle::class)
         ];
     }
 
@@ -86,6 +86,4 @@ class VehicleType extends Resource
     {
         return [];
     }
-
-    public static $perPageOptions = [10, 100, 150];
 }

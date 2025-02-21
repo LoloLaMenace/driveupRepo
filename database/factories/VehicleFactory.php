@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\City;
 use App\Models\Company;
 use App\Models\Critair;
+use App\Models\Driver;
 use App\Models\Energy;
 use App\Models\Flocking;
 use App\Models\Status;
@@ -40,6 +41,7 @@ class VehicleFactory extends Factory
             'tire_type_id' => TireType::factory(),
             'critair_id' => Critair::factory(),
             'flocking_id' => Flocking::factory(),
+            'driver_id' => Driver::factory(),
         ];
     }
 }
