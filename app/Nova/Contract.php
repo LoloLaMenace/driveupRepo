@@ -3,27 +3,26 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Driver extends Resource
+class Contract extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Driver>
+     * @var class-string<\App\Models\Contract>
      */
-    public static $model = \App\Models\Driver::class;
+    public static $model = \App\Models\Contract::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'number';
 
     /**
      * The columns that should be searched.
@@ -43,8 +42,10 @@ class Driver extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name')->sortable(),
-            HasOne::make(__('Vehicle'), 'vehicle', Vehicle::class)
+            Text::make('number', 'number'),
+            Date::make('start', 'started_at'),
+            Date::make('finished', 'finished_at'),
+            Text::make('rent', 'rent'),
         ];
     }
 

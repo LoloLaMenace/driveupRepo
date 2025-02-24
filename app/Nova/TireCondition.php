@@ -2,28 +2,26 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Driver extends Resource
+class TireCondition extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Driver>
+     * @var class-string<\App\Models\TireCondition>
      */
-    public static $model = \App\Models\Driver::class;
+    public static $model = \App\Models\TireCondition::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'slug';
 
     /**
      * The columns that should be searched.
@@ -43,8 +41,8 @@ class Driver extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name')->sortable(),
-            HasOne::make(__('Vehicle'), 'vehicle', Vehicle::class)
+            Text::make(__('State'), 'state')->sortable(),
+            BelongsTo::make(__('Type'), 'tireType', TireType::class)
         ];
     }
 

@@ -43,7 +43,6 @@ class TireType extends Resource
         return [
             ID::make()->sortable(),
             Text::make('name')->sortable(),
-            HasMany::make(__('Vehicles'), 'vehicles', Vehicle::class),
         ];
     }
 

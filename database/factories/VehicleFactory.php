@@ -4,13 +4,17 @@ namespace Database\Factories;
 
 use App\Models\City;
 use App\Models\Company;
+use App\Models\Contract;
 use App\Models\Critair;
 use App\Models\Driver;
 use App\Models\Energy;
 use App\Models\Flocking;
+use App\Models\Lessor;
 use App\Models\Status;
+use App\Models\TireCondition;
 use App\Models\TireType;
 use App\Models\VehicleModel;
+use App\Nova\Metrics\TotalVehicles;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -38,10 +42,16 @@ class VehicleFactory extends Factory
             'company_id' => Company::factory(),
             'energy_id' => Energy::factory(),
             'co2_emission' => faker()->number(0, 10000),
-            'tire_type_id' => TireType::factory(),
             'critair_id' => Critair::factory(),
             'flocking_id' => Flocking::factory(),
             'driver_id' => Driver::factory(),
+            'front_left_tire_condition_id' => TireCondition::factory(),
+            'front_right_tire_condition_id' => TireCondition::factory(),
+            'rear_left_tire_condition_id' => TireCondition::factory(),
+            'rear_right_tire_condition_id' => TireCondition::factory(),
+            'contract_id' => Contract::factory(),
+            'lessor_id' => Lessor::factory(),
+            'tire_type_id' => TireType::factory(),
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use App\Models\Driver;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -28,6 +29,12 @@ class DriverFactory extends Factory
     {
         return [
             'name' => faker()->name(),
+            'company_id' => Company::factory(),
+            'phone_number' => faker()->convertCharacters(string: '##########'),
+            'email' => faker()->email(),
+            'license_number' => faker()->number(0, 99999999),
+            'attribution_date' => faker()->dateTime('-5 years', 'now'),
+            'restitution_date' => faker()->dateTime('now', '+5 years'),
         ];
     }
 }

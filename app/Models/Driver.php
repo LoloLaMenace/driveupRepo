@@ -10,8 +10,16 @@ class Driver extends Model
     /** @use HasFactory<\Database\Factories\DriverFactory> */
     use HasFactory;
 
-    public function vehicle(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function casts(): array
     {
-        return $this->belongsTo(Vehicle::class);
+        return [
+            'attribution_date' => 'datetime:Y-m-d',
+            'restitution_date' => 'datetime:Y-m-d',
+        ];
+    }
+
+    public function vehicle(): \Illuminate\Database\Eloquent\Relations\hasOne
+    {
+        return $this->hasOne(Vehicle::class);
     }
 }

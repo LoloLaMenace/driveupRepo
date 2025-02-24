@@ -2,10 +2,8 @@
 
 namespace App\Nova;
 
-use App\Models\Energy;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -66,12 +64,21 @@ class Vehicle extends Resource
                     Text::make(__('Chassis number'), 'chassis_number')->sortable(),
                     Text::make(__('Last mileage'), 'mileage')->sortable(),
                     Date::make(__('Last statement'), 'last_statement')->sortable(),
-                    BelongsTo::make(__('Energy'), 'energy', \App\Nova\Energy::class),
+                    BelongsTo::make(__('Energy'), 'energy', Energy::class),
                     Number::make(__('CO2'), 'co2_emission')->sortable(),
-                    BelongsTo::make(__('Tire type'), 'tireType', TireType::class),
                     BelongsTo::make(__('Critair'), 'critair', Critair::class),
                     BelongsTo::make(__('Flocking'), 'flocking', Flocking::class),
-                    HasOne::make(__('Driver'), 'driver', Driver::class),
+                    BelongsTo::make('Front left', 'frontLeftTireCondition', TireCondition::class),
+                    BelongsTo::make('Front right', 'frontRightTireCondition', TireCondition::class),
+                    BelongsTo::make('Rear left', 'rearLeftTireCondition', TireCondition::class),
+                    BelongsTo::make('Rear right', 'rearRightTireCondition', TireCondition::class),
+                    BelongsTo::make(__('Contract number'), 'contract', Contract::class),
+                    BelongsTo::make(__('Tire Type'), 'tireType', TireType::class),
+                    BelongsTo::make(__('Lessor'), 'lessor', Lessor::class ),
+                ]),
+                Tab::make('Insurance Details', [
+                    // @TODO: loueur / etc a mettre ici
+                    BelongsTo::make(__('Driver'), 'driver', Driver::class),
                 ]),
             ]),
         ];

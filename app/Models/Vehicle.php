@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Location;
+use PhpParser\Internal\PrintableNewAnonClassNode;
 
 class Vehicle extends Model
 {
@@ -46,11 +47,6 @@ class Vehicle extends Model
         return $this->belongsTo(Energy::class, 'energy_id');
     }
 
-    public function tireType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(TireType::class, 'tire_type_id');
-    }
-
     public function critair(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Critair::class, 'critair_id');
@@ -61,8 +57,41 @@ class Vehicle extends Model
         return $this->belongsTo(Flocking::class, 'flocking_id');
     }
 
-    public function driver(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function driver(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasOne(Driver::class);
+        return $this->belongsTo(Driver::class, 'driver_id');
     }
+
+    public function tireType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(TireType::class, 'tire_type_id');
+    }
+
+    public function frontLeftTireCondition(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(TireCondition::class, 'front_left_tire_condition_id');
+    }
+
+    public function frontRightTireCondition(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(TireCondition::class, 'front_right_tire_condition_id');
+    }
+    public function rearLeftTireCondition(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(TireCondition::class, 'rear_left_tire_condition_id');
+    }
+    public function rearRightTireCondition(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(TireCondition::class, 'rear_right_tire_condition_id');
+    }
+
+    public function contract(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Contract::class, 'contract_id');
+    }
+    public function lessor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Lessor::class);
+    }
+
 }
