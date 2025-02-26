@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\HasOneThrough;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -54,26 +55,25 @@ class Vehicle extends Resource
                     Text::make(__('Brand'), function () {
                         return $this->model->brand->name ?? '-';
                     }),
-                    BelongsTo::make(__('Vehicle Type'), 'vehicleType', VehicleType::class),
-                    BelongsTo::make(__('Vehicle Model'), 'model', VehicleModel::class),
+                    BelongsTo::make(__('Vehicle Type'), 'vehicleType', VehicleType::class)->showCreateRelationButton(),
+                    BelongsTo::make(__('Vehicle Model'), 'model', VehicleModel::class)->showCreateRelationButton(),
 //                    Text::make(__('Status'), function(){
 //                        return $this->status->name ?? '-';
 //                    }),
                     BelongsTo::make(__('Status'), 'status', Status::class),
-                    BelongsTo::make(__('Billing Address'), 'company', Company::class),
-                    BelongsTo::make(__('Location Vehicle'), 'locationCity', City::class),
+                    BelongsTo::make(__('Billing Address'), 'company', Company::class)->showCreateRelationButton(),
+                    BelongsTo::make(__('Location Vehicle'), 'locationCity', City::class)->showCreateRelationButton(),
 //                    Text::make(__('Duplicate Key'), function(){
 //                        return $this->locationDoubleKeyCity->name ?? '-';
 //                    }),
-                    BelongsTo::make(__('Duplicate Key'), 'locationDoubleKeyCity', City::class),
+                    BelongsTo::make(__('Duplicate Key'), 'locationDoubleKeyCity', City::class)->showCreateRelationButton(),
                     Text::make(__('Chassis Number'), 'chassis_number')->sortable(),
                     Text::make(__('Last Mileage'), 'mileage')->sortable(),
                     Date::make(__('Last Statement'), 'last_statement')->sortable(),
-                    BelongsTo::make(__('Energy'), 'energy', Energy::class),
+                    BelongsTo::make(__('Energy'), 'energy', Energy::class)->showCreateRelationButton(),
                     Number::make(__('CO2'), 'co2_emission')->sortable(),
-                    BelongsTo::make(__('Critair'), 'critair', Critair::class),
-                    BelongsTo::make(__('Flocking'), 'flocking', Flocking::class),
-                    \Xefi\TireCondition\TireCondition::make(__('Tire Condition'))->hideWhenCreating()->hideWhenUpdating(),
+                    BelongsTo::make(__('Critair'), 'critair', Critair::class)->showCreateRelationButton(),
+                    BelongsTo::make(__('Flocking'), 'flocking', Flocking::class)->showCreateRelationButton(),
                     BelongsTo::make(__('Front Left Tire Condition'), 'frontLeftTireCondition', TireCondition::class)
                         ->onlyOnForms(),
                     BelongsTo::make(__('Front Right Tire Condition'), 'frontRightTireCondition', TireCondition::class)
