@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -46,6 +48,8 @@ class Contract extends Resource
             Date::make('Start Date', 'started_at'),
             Date::make('End Date', 'finished_at'),
             Text::make('Rent', 'rent'),
+            BelongsTo::make(__('Insurer'), 'insurer', Insurer::class)->showCreateRelationButton(),
+            HasOne::make(__('Vehicle'), 'vehicle', Vehicle::class),
         ];
     }
 
