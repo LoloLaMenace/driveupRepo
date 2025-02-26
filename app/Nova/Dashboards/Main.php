@@ -22,6 +22,6 @@ class Main extends Dashboard
 
     public function name()
     {
-        return __('STATISTICS');
+        return __('Statistics');
     }
 }

@@ -10,8 +10,12 @@ class VehicleType extends Model
     /** @use HasFactory<\Database\Factories\VehicleTypeFactory> */
     use HasFactory;
 
-    public function vehiclesModel(): \Illuminate\Database\Eloquent\Relations\HasMany
+    protected $fillable = [
+        'name',
+    ];
+
+    public function vehicles(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(VehicleModel::class);
+        return $this->hasMany(Vehicle::class);
     }
 }

@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Panel;
 use Laravel\Nova\Tabs\Tab;
 
 class Vehicle extends Resource
@@ -47,41 +48,69 @@ class Vehicle extends Resource
     public function fields(NovaRequest $request): array
     {
         return [
-//            ID::make()->sortable(),
-//            \Laravel\Nova\Fields\Text::make(__('Registration'), 'registration')->sortable(),
-//            BelongsTo::make(__('Vehicle Model'), 'model', VehicleModel::class),
-//            BelongsTo::make(__('Status'), 'status', Status::class),
-
             Tab::group('Detail', [
-                Tab::make('Vehicle Details',[
-                    ID::make()->sortable(),
+                Tab::make(__('Vehicle Details'), [
                     Text::make(__('Registration'), 'registration')->sortable(),
+                    Text::make(__('Brand'), function () {
+                        return $this->model->brand->name ?? '-';
+                    }),
+                    BelongsTo::make(__('Vehicle Type'), 'vehicleType', VehicleType::class),
                     BelongsTo::make(__('Vehicle Model'), 'model', VehicleModel::class),
+//                    Text::make(__('Status'), function(){
+//                        return $this->status->name ?? '-';
+//                    }),
                     BelongsTo::make(__('Status'), 'status', Status::class),
                     BelongsTo::make(__('Billing Address'), 'company', Company::class),
-                    BelongsTo::make(__('Location vehicle'), 'locationCity', City::class),
-                    BelongsTo::make(__('Duplicate key'),'locationDoubleKeyCity', City::class),
-                    Text::make(__('Chassis number'), 'chassis_number')->sortable(),
-                    Text::make(__('Last mileage'), 'mileage')->sortable(),
-                    Date::make(__('Last statement'), 'last_statement')->sortable(),
+                    BelongsTo::make(__('Location Vehicle'), 'locationCity', City::class),
+//                    Text::make(__('Duplicate Key'), function(){
+//                        return $this->locationDoubleKeyCity->name ?? '-';
+//                    }),
+                    BelongsTo::make(__('Duplicate Key'), 'locationDoubleKeyCity', City::class),
+                    Text::make(__('Chassis Number'), 'chassis_number')->sortable(),
+                    Text::make(__('Last Mileage'), 'mileage')->sortable(),
+                    Date::make(__('Last Statement'), 'last_statement')->sortable(),
                     BelongsTo::make(__('Energy'), 'energy', Energy::class),
                     Number::make(__('CO2'), 'co2_emission')->sortable(),
                     BelongsTo::make(__('Critair'), 'critair', Critair::class),
                     BelongsTo::make(__('Flocking'), 'flocking', Flocking::class),
-                    BelongsTo::make('Front left', 'frontLeftTireCondition', TireCondition::class),
-                    BelongsTo::make('Front right', 'frontRightTireCondition', TireCondition::class),
-                    BelongsTo::make('Rear left', 'rearLeftTireCondition', TireCondition::class),
-                    BelongsTo::make('Rear right', 'rearRightTireCondition', TireCondition::class),
-                    BelongsTo::make(__('Contract number'), 'contract', Contract::class),
+                    \Xefi\TireCondition\TireCondition::make(__('Tire Condition'))->hideWhenCreating()->hideWhenUpdating(),
+                    BelongsTo::make(__('Front Left Tire Condition'), 'frontLeftTireCondition', TireCondition::class)
+                        ->onlyOnForms(),
+                    BelongsTo::make(__('Front Right Tire Condition'), 'frontRightTireCondition', TireCondition::class)
+                        ->onlyOnForms(),
+                    BelongsTo::make(__('Rear Left Tire Condition'), 'rearLeftTireCondition', TireCondition::class)
+                        ->onlyOnForms(),
+                    BelongsTo::make(__('Rear Right Tire Condition'), 'rearRightTireCondition', TireCondition::class)
+                        ->onlyOnForms(),
                     BelongsTo::make(__('Tire Type'), 'tireType', TireType::class),
-                    BelongsTo::make(__('Lessor'), 'lessor', Lessor::class ),
                 ]),
-                Tab::make('Insurance Details', [
-                    // @TODO: loueur / etc a mettre ici
-                    BelongsTo::make(__('Driver'), 'driver', Driver::class),
+
+                Tab::make(__('Contract & Insurance'), [
+                    BelongsTo::make(__('Contract Number'), 'contract', Contract::class)->showCreateRelationButton(),
+                    Date::make(__('Start Date'), 'contract.started_at'),
+                    Date::make(__('End Date'), 'contract.finished_at'),
+                    Text::make(__('Insurer Name'), function () {
+                        return $this->contract->insurer->name ?? '-';
+                    }),
+                    BelongsTo::make(__('Lessor'), 'lessor', Lessor::class),
                 ]),
-            ]),
+
+                Tab::make(__('Driver'), [
+                        BelongsTo::make(__('Driver'), 'driver', User::class)->nullable(),
+                ]),
+            ])
         ];
+
+    }
+
+    /**
+     * Get the search result subtitle for the resource.
+     *
+     * @return string
+     */
+    public function subtitle()
+    {
+        return "{$this->model->brand->name}, {$this->model->name}, {$this->driver->name}";
     }
 
     /**

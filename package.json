@@ -3,7 +3,9 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "build-tire-condition": "cd nova-components/TireCondition && npm run dev",
+        "build-tire-condition-prod": "cd nova-components/TireCondition && npm run prod"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",

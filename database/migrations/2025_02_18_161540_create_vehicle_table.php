@@ -4,12 +4,14 @@ use App\Models\City;
 use App\Models\Company;
 use App\Models\Contract;
 use App\Models\Critair;
-use App\Models\Driver;
 use App\Models\Energy;
 use App\Models\Flocking;
+use App\Models\Lessor;
 use App\Models\Status;
 use App\Models\TireCondition;
-use App\Models\Vehicle;
+use App\Models\TireType;
+use App\Models\User;
+use App\Models\VehicleModel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -30,7 +32,7 @@ return new class extends Migration
             $table->unsignedInteger('mileage');
             $table->date('last_statement');
             $table->integer('co2_emission');
-            $table->foreignIdFor(\App\Models\VehicleModel::class,)->constrained();
+            $table->foreignIdFor(VehicleModel::class,)->constrained();
             $table->foreignIdFor(Status::class)->constrained();
             $table->foreignIdFor(City::class, 'location_city_id')->constrained();
             $table->foreignIdFor(City::class, 'location_duplicate_key_city_id')->constrained();
@@ -38,14 +40,17 @@ return new class extends Migration
             $table->foreignIdFor(Energy::class,)->constrained();
             $table->foreignIdFor(Critair::class,)->constrained();
             $table->foreignIdFor(Flocking::class,)->constrained();
-            $table->foreignIdFor(Driver::class,)->constrained();
-            $table->foreignIdFor(\App\Models\TireType::class,)->constrained();
+            $table->foreignIdFor(User::class, 'driver_id')->nullable()->constrained();
+            $table->foreignIdFor(TireType::class,)->constrained();
             $table->foreignIdFor(TireCondition::class, 'front_left_tire_condition_id')->constrained();
             $table->foreignIdFor(TireCondition::class, 'front_right_tire_condition_id')->constrained();
             $table->foreignIdFor(TireCondition::class, 'rear_left_tire_condition_id')->constrained();
             $table->foreignIdFor(TireCondition::class, 'rear_right_tire_condition_id')->constrained();
             $table->foreignIdFor(Contract::class,)->constrained();
-            $table->foreignIdFor(\App\Models\Lessor::class);
+            $table->foreignIdFor(Lessor::class);
+            $table->foreignIdFor(\App\Models\VehicleType::class);
+            $table->date('attribution_date');
+            $table->date('restitution_date');
 
         });
     }

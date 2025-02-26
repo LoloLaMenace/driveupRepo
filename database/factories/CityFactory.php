@@ -27,7 +27,7 @@ class CityFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => faker()->words(3)
+            'name' => faker()->city()
         ];
     }
 }

@@ -14,8 +14,30 @@ return new class extends Migration
         Schema::create('energies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('acronym');
             $table->timestamps();
         });
+
+        \App\Models\Energy::create([
+            'name' => 'Essence',
+            'acronym' => 'ES'
+        ]);
+        \App\Models\Energy::create([
+            'name' => 'Electrique',
+            'acronym' => 'EL'
+        ]);
+        \App\Models\Energy::create([
+            'name' => 'Gazole',
+            'acronym' => 'GO'
+        ]);
+        \App\Models\Energy::create([
+            'name' => 'Hybride rechargeable',
+            'acronym' => 'EE'
+        ]);
+        \App\Models\Energy::create([
+            'name' => 'Essence-GPL',
+            'acronym' => 'EG'
+        ]);
     }
 
     /**

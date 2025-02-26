@@ -41,8 +41,8 @@ class Energy extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name')->sortable(),
-            HasMany::make(__('vehicles'), 'vehicles', Vehicle::class),
+            Text::make('Name')->sortable(),
+            HasMany::make(__('Vehicles'), 'vehicles', Vehicle::class),
         ];
     }
 

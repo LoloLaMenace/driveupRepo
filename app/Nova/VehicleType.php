@@ -22,7 +22,7 @@ class VehicleType extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -42,8 +42,8 @@ class VehicleType extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name')->sortable(),
-            HasMany::make(__('vehicles models'), 'vehiclesModel', VehicleModel::class),
+            Text::make('Name')->sortable(),
+            HasMany::make(__('Vehicles'), 'vehicles', Vehicle::class),
         ];
     }
 

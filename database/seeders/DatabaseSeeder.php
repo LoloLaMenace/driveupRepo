@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Vehicle;
 use App\Nova\Brand;
 use App\Nova\VehicleModel;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,16 +24,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        \App\Models\Brand::factory()->count(3)
-            ->has(
-                \App\Models\VehicleModel::factory()->count(5)
-                    ->has(
-                        Vehicle::factory()->count(5)
-                    ),
-                'models'
-            )
-            ->create();
-
-
+        $this->call(BrandSeeder::class);
+        $this->call(CitySeeder::class);
+        $this->call(InsurerSeeder::class);
+        $this->call(LessorSeeder::class);
+        $this->call(VehicleSeeder::class);
     }
 }

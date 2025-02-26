@@ -41,8 +41,8 @@ class TireCondition extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make(__('State'), 'state')->sortable(),
-            BelongsTo::make(__('Type'), 'tireType', TireType::class)
+            Text::make(__('Slug'), 'slug')->sortable(),
+            Text::make(__('Color'), 'color')->sortable(),
         ];
     }
 

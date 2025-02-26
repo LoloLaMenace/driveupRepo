@@ -16,6 +16,18 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
         });
+
+        \App\Models\TireType::create([
+                'name' => '4 Saisons'
+        ]);
+
+        \App\Models\TireType::create([
+            'name' => 'Ete'
+        ]);
+
+        \App\Models\TireType::create([
+            'name' => 'Hiver'
+        ]);
     }
 
     /**

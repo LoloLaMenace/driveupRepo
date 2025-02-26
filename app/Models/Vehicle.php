@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 use phpDocumentor\Reflection\Location;
 use PhpParser\Internal\PrintableNewAnonClassNode;
 
 class Vehicle extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     public function casts(): array
     {
@@ -59,7 +61,7 @@ class Vehicle extends Model
 
     public function driver(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Driver::class, 'driver_id');
+        return $this->belongsTo(User::class, 'driver_id');
     }
 
     public function tireType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -94,4 +96,26 @@ class Vehicle extends Model
         return $this->belongsTo(Lessor::class);
     }
 
+    public function  vehicleType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(VehicleType::class, 'vehicle_type_id');
+    }
+
+    /**
+     * Modify the query used to retrieve models when making all of the models searchable.
+     */
+    protected function makeAllSearchableUsing(Builder $query): Builder
+    {
+        return $query->with('model.brand');
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        $array['vehicle_model_name'] = $this->model->name;
+        $array['vehicle_brand_name'] = $this->model->brand->name;
+
+        return $array;
+    }
 }

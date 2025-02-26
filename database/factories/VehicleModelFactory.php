@@ -21,7 +21,6 @@ class VehicleModelFactory extends Factory
         return [
             'name' => faker()->name(),
             'brand_id' => Brand::factory(),
-            'vehicle_type_id' => VehicleType::factory(),
         ];
     }
 }

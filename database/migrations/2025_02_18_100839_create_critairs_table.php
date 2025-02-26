@@ -16,6 +16,22 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('number');
         });
+
+        \App\Models\Critair::create([
+            'number' => '1'
+        ]);
+        \App\Models\Critair::create([
+            'number' => '2'
+        ]);
+        \App\Models\Critair::create([
+            'number' => '3'
+        ]);
+        \App\Models\Critair::create([
+            'number' => '4'
+        ]);
+        \App\Models\Critair::create([
+            'number' => '5'
+        ]);
     }
 
     /**

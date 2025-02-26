@@ -16,7 +16,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name', 20);
             $table->foreignIdFor(\App\Models\Brand::class)->constrained();
-            $table->foreignIdFor(\App\Models\VehicleType::class)->constrained();
         });
     }
 

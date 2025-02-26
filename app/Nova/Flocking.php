@@ -42,7 +42,7 @@ class Flocking extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name')->sortable(),
+            Text::make('Name')->sortable(),
             HasMany::make(__('Vehicles'), 'vehicles', Vehicle::class),
         ];
     }

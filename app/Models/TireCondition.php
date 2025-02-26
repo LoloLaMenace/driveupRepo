@@ -10,4 +10,9 @@ class TireCondition extends Model
     /** @use HasFactory<\Database\Factories\TireConditionFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'slug',
+        'color'
+    ];
+
 }

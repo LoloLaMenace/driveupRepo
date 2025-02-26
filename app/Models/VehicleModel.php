@@ -18,9 +18,4 @@ class VehicleModel extends Model
     {
         return $this->belongsTo(Brand::class);
     }
-
-    public function vehicleType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(VehicleType::class);
-    }
 }

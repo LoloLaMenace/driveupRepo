@@ -16,7 +16,24 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name', 20);
         });
+
+        \App\Models\Status::create([
+            'name' => 'Attribué'
+        ]);
+
+        \App\Models\Status::create([
+            'name' => 'Disponible'
+        ]);
+
+        \App\Models\Status::create([
+            'name' => 'Commandé'
+        ]);
+
+        \App\Models\Status::create([
+            'name' => 'Restitué'
+        ]);
     }
+
 
     /**
      * Reverse the migrations.

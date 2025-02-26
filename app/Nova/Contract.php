@@ -42,10 +42,10 @@ class Contract extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('number', 'number'),
-            Date::make('start', 'started_at'),
-            Date::make('finished', 'finished_at'),
-            Text::make('rent', 'rent'),
+            Text::make('Number', 'number'),
+            Date::make('Start Date', 'started_at'),
+            Date::make('End Date', 'finished_at'),
+            Text::make('Rent', 'rent'),
         ];
     }
 

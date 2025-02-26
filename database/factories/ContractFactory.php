@@ -32,7 +32,15 @@ class ContractFactory extends Factory
             'started_at' => faker()->dateTime('-5 years', 'now'),
             'finished_at' => faker()->dateTime('now', '+5 years'),
             'rent' => faker()->number(0, 999999),
-            'insurer_id' => Insurer::factory(),
         ];
+    }
+
+    public function configure(): static
+    {
+        return $this->afterMaking(function (Contract $contract) {
+            if (!$contract->hasAttribute($contract->insurer()->getForeignKeyName())) {
+                $contract->insurer()->associate(Insurer::factory()->createOne());
+            }
+        });
     }
 }

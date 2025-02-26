@@ -27,7 +27,8 @@ class EnergyFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => faker()->name()
+            'name' => faker()->name(),
+            'acronym' =>faker()->convertCharacters('??'),
         ];
     }
 }

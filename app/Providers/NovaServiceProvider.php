@@ -32,18 +32,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuSection::resource(Vehicle::class)
                     ->icon('truck'),
-
-                MenuSection::resource(Driver::class)
-                    ->icon('identification'),
-
-                MenuSection::resource(\App\Nova\User::class)
-                    ->icon('user'),
-
-
-                MenuSection::make('Configuration', [
-                    MenuItem::resource(VehicleModel::class),
-                    MenuItem::resource(Brand::class),
-                ])->icon('cog-6-tooth')->collapsable()->collapsedByDefault(),
             ];
         });
 

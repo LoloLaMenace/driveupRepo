@@ -42,7 +42,7 @@ class Critair extends Resource
         return [
             ID::make()->sortable(),
             Number::make(__('Number'), 'number')->sortable(),
-            HasMany::make(__('vehicles'), 'vehicles', Vehicle::class),
+            HasMany::make(__('Vehicles'), 'vehicles', Vehicle::class),
         ];
     }
 

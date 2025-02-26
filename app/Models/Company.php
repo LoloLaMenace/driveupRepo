@@ -10,8 +10,17 @@ class Company extends Model
     /** @use HasFactory<\Database\Factories\CompanyFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function vehicles(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Vehicle::class);
+    }
+
+    public function drivers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(User::class);
     }
 }

@@ -43,6 +43,13 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'attribution_date' => 'datetime:Y-m-d',
+            'restitution_date' => 'datetime:Y-m-d',
         ];
+    }
+
+    public function vehicle(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Vehicle::class, 'driver_id', 'id');
     }
 }

@@ -16,6 +16,22 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
         });
+
+        \App\Models\VehicleType::create([
+            'name' => '2 Places'
+        ]);
+        \App\Models\VehicleType::create([
+            'name' => '5 Places'
+        ]);
+        \App\Models\VehicleType::create([
+            'name' => 'Utilitaire'
+        ]);
+        \App\Models\VehicleType::create([
+            'name' => 'Moto'
+        ]);
+        \App\Models\VehicleType::create([
+            'name' => '5 Places Grand Voyageur'
+        ]);
     }
 
     /**

@@ -16,6 +16,22 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
         });
+
+        \App\Models\Flocking::create([
+            'name' => 'XEFI'
+        ]);
+        \App\Models\Flocking::create([
+            'name' => 'NEXEREN'
+        ]);
+        \App\Models\Flocking::create([
+            'name' => 'FORTALICIA'
+        ]);
+        \App\Models\Flocking::create([
+            'name' => 'ANGELINKS'
+        ]);
+        \App\Models\Flocking::create([
+            'name' => 'IDCOM'
+        ]);
     }
 
     /**

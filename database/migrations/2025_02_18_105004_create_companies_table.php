@@ -16,6 +16,51 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        \App\Models\Company::create([
+            'name' => 'XEFI LYON'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI MACON'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI BOURG'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI MONACO'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI BASTIA'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI LSE'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI LSO'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI LNO'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI VENDOME'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI NICE'
+        ]);
+
+        \App\Models\Company::create([
+            'name' => 'XEFI CLERMONT'
+        ]);
+
     }
 
     /**

@@ -17,6 +17,21 @@ return new class extends Migration
             $table->string('slug');
             $table->string('color');
         });
+
+        \App\Models\TireCondition::create([
+            'slug' => 'good',
+            'color' => '#008000'
+        ]);
+
+        \App\Models\TireCondition::create([
+            'slug' => 'medium',
+            'color' => '#FFA500'
+        ]);
+
+        \App\Models\TireCondition::create([
+            'slug' => 'bad',
+            'color' => '#FF0000'
+        ]);
     }
 
     /**
