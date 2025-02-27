@@ -19,17 +19,12 @@ return new class extends Migration
         });
 
         \App\Models\TireCondition::create([
-            'slug' => 'good',
+            'slug' => 'Bon état',
             'color' => '#008000'
         ]);
 
         \App\Models\TireCondition::create([
-            'slug' => 'medium',
-            'color' => '#FFA500'
-        ]);
-
-        \App\Models\TireCondition::create([
-            'slug' => 'bad',
+            'slug' => 'Mauvaise état',
             'color' => '#FF0000'
         ]);
     }

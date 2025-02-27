@@ -49,7 +49,7 @@ class Vehicle extends Resource
     public function fields(NovaRequest $request): array
     {
         return [
-            Tab::group('Detail', [
+            Tab::group(__('Details'), [
                 Tab::make(__('Vehicle Details'), [
                     Text::make(__('Registration'), 'registration')->sortable(),
                     Text::make(__('Brand'), function () {
@@ -74,6 +74,7 @@ class Vehicle extends Resource
                     Number::make(__('CO2'), 'co2_emission')->sortable(),
                     BelongsTo::make(__('Critair'), 'critair', Critair::class)->showCreateRelationButton(),
                     BelongsTo::make(__('Flocking'), 'flocking', Flocking::class)->showCreateRelationButton(),
+                    \Xefi\TireCondition\TireCondition::make(__('Tire Condition'))->hideWhenCreating()->hideWhenUpdating(),
                     BelongsTo::make(__('Front Left Tire Condition'), 'frontLeftTireCondition', TireCondition::class)
                         ->onlyOnForms(),
                     BelongsTo::make(__('Front Right Tire Condition'), 'frontRightTireCondition', TireCondition::class)
@@ -96,7 +97,13 @@ class Vehicle extends Resource
                 ]),
 
                 Tab::make(__('Driver'), [
-                        BelongsTo::make(__('Driver'), 'driver', User::class)->nullable(),
+                    BelongsTo::make(__('Driver'), 'driver', User::class)->nullable(),
+                    Text::make(__('Email'), function () {
+                        return $this->driver->email ?? '-';
+                    }),
+                    Text::make(__('License Number'), function () {
+                        return $this->driver->license_number ?? '-';
+                    }),
                 ]),
             ])
         ];

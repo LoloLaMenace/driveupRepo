@@ -43,8 +43,8 @@ class Company extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name')->sortable(),
-            HasMany::make('Vehicles', 'vehicles', Vehicle::class),
+            Text::make(__('Name'), 'name')->sortable(),
+            HasMany::make(__('Vehicles'), 'vehicles', Vehicle::class),
         ];
     }
 

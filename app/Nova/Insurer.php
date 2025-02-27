@@ -41,7 +41,7 @@ class Insurer extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make(__('Name'), 'name')->sortable(),
+            Text::make(__(__('Name')), 'name')->sortable(),
             HasMany::make(__('Contracts'), 'contracts', Contract::class),
         ];
     }

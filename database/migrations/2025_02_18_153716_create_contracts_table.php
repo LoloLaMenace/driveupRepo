@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('started_at');
             $table->date('finished_at');
             $table->integer('rent');
-            $table->foreignIdFor(\App\Models\Insurer::class);
+            $table->foreignIdFor(\App\Models\Insurer::class)->nullable();
         });
     }
 

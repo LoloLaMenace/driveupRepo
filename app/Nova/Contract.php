@@ -44,12 +44,12 @@ class Contract extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Number', 'number'),
-            Date::make('Start Date', 'started_at'),
-            Date::make('End Date', 'finished_at'),
-            Text::make('Rent', 'rent'),
+            Text::make(__('Number'), 'number'),
+            Date::make(__('Start Date'), 'started_at'),
+            Date::make(__('End Date'), 'finished_at'),
+            Text::make(__('Rent'), 'rent'),
             BelongsTo::make(__('Insurer'), 'insurer', Insurer::class)->showCreateRelationButton(),
-            HasOne::make(__('Vehicle'), 'vehicle', Vehicle::class),
+            HasOne::make(__('Vehicle'), 'vehicle', Vehicle::class)->nullable(),
         ];
     }
 
