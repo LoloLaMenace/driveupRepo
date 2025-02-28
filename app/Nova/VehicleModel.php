@@ -45,7 +45,7 @@ class VehicleModel extends Resource
         return [
             ID::make()->sortable(),
             \Laravel\Nova\Fields\Text::make(__('Name'), 'name')->sortable(),
-            BelongsTo::make(__('Brand'), 'brand', Brand::class),
+            BelongsTo::make(__('Brand'), 'brand', Brand::class)->showCreateRelationButton(),
             HasMany::make(__('Vehicles'), 'vehicles', Vehicle::class),
         ];
     }

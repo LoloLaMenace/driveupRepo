@@ -496,8 +496,8 @@
     "Name": "Nom",
     "Vehicles": "Véhicules",
     "Vehicle": "Véhicule",
-    "Vehicle Type" : "Type De Vehicle",
-    "Vehicle Model" : "Model De Vehicle",
+    "Vehicle Type" : "Type De Véhicule",
+    "Vehicle Model" : "Model De Véhicule",
     "Duplicate Key": "Double Des Clés",
     "Number": "Numéro",
     "Start Date": "Date de début",
@@ -519,7 +519,7 @@
     "Chassis Number": "Numéro de châssis",
     "License Number": "Numéro de permis",
     "Last Mileage": "Dernier kilométrage",
-    "Last Statement": "Dernier relevé",
+    "Last Statement": "Dernier relevé Km",
     "Energy": "Énergie",
     "CO2": "CO2",
     "Critair": "Crit'Air",
@@ -533,5 +533,8 @@
     "Contract & Insurance": "Contrat & Assurance",
     "Contract Number": "Numéro du contrat",
     "Insurer Name": "Nom de l'assureur",
-    "Driver": "Conducteur"
+    "Driver": "Conducteur",
+    "Max Mileage" : "Kilomètrage Max",
+    "Attribution Date" : "Date D'Attribution",
+    "Restitution Date" : "Date De Restitution"
 }

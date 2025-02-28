@@ -16,6 +16,7 @@
         "laravel/scout": "^10.13",
         "laravel/tinker": "^2.9",
         "meilisearch/meilisearch-php": "^1.13",
+        "spatie/laravel-permission": "^6.15",
         "xefi/tire-condition": "@dev"
     },
     "require-dev": {

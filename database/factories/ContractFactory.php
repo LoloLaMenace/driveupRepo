@@ -31,6 +31,7 @@ class ContractFactory extends Factory
             'number' => faker()->convertCharacters('##??##??##??##'),
             'started_at' => faker()->dateTime('-5 years', 'now'),
             'finished_at' => faker()->dateTime('now', '+5 years'),
+            'max_mileage' => faker()->number(0, 17000),
             'rent' => faker()->number(0, 999999),
         ];
     }

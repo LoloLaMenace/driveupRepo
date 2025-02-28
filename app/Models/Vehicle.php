@@ -17,6 +17,8 @@ class Vehicle extends Model
     {
         return [
             'last_statement' => 'datetime:Y-m-d',
+            'attribution_date' => 'datetime:Y-m-d',
+            'restitution_date' => 'datetime:Y-m-d',
         ];
     }
     public function model(): \Illuminate\Database\Eloquent\Relations\BelongsTo

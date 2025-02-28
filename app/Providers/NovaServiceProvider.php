@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\User;
 use App\Nova\Brand;
+use App\Nova\Contract;
 use App\Nova\Dashboards\Main;
 use App\Nova\Driver;
 use App\Nova\Vehicle;
@@ -28,10 +29,17 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
         Nova::mainMenu(function (Request $request) {
             return [
-                MenuSection::dashboard(Main::class)->icon('arrow-trending-up'),
+                MenuSection::dashboard(Main::class)
+                    ->icon('arrow-trending-up'),
 
                 MenuSection::resource(Vehicle::class)
                     ->icon('truck'),
+
+                MenuSection::make('Configuration', [
+                    MenuItem::resource(VehicleModel::class),
+                    MenuItem::resource(Brand::class),
+                    MenuItem::resource(Contract::class),
+                ])->icon('cog-6-tooth')->collapsable()->collapsedByDefault(),
             ];
         });
 

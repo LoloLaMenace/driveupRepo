@@ -28,7 +28,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('registration', 10)->unique();
             $table->string('chassis_number', 17)->unique();
-            $table->unsignedInteger('contract_mileage');
             $table->unsignedInteger('mileage');
             $table->date('last_statement');
             $table->integer('co2_emission');

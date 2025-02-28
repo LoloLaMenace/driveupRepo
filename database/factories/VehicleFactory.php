@@ -34,7 +34,6 @@ class VehicleFactory extends Factory
         return [
             'registration' => faker()->uppercase()->convertCharacters('??-###-??'),
             'chassis_number' => faker()->uppercase()->convertCharacters(string: '################'),
-            'contract_mileage' => faker()->number(0, 17000),
             'mileage' => faker()->number(0, 17000),
             'last_statement' => faker()->dateTime('-15 day', 'now'),
             'co2_emission' => faker()->number(0, 10000),

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('started_at');
             $table->date('finished_at');
             $table->integer('rent');
+            $table->unsignedInteger('max_mileage');
             $table->foreignIdFor(\App\Models\Insurer::class)->nullable();
         });
     }

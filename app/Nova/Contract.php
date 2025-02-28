@@ -32,7 +32,7 @@ class Contract extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'number', 'id',
     ];
 
     /**
@@ -44,12 +44,14 @@ class Contract extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make(__('Number'), 'number'),
-            Date::make(__('Start Date'), 'started_at'),
-            Date::make(__('End Date'), 'finished_at'),
-            Text::make(__('Rent'), 'rent'),
+            Text::make(__('Number'), 'number')->sortable(),
+            Date::make(__('Start Date'), 'started_at')->sortable(),
+            Date::make(__('End Date'), 'finished_at')->sortable(),
+            Text::make(__('Rent'), 'rent')->sortable(),
+            Text::make(__('Max Mileage'), 'max_mileage'),
             BelongsTo::make(__('Insurer'), 'insurer', Insurer::class)->showCreateRelationButton(),
-            HasOne::make(__('Vehicle'), 'vehicle', Vehicle::class)->nullable(),
+            HasOne::make(__('Vehicle'), 'vehicle', Vehicle::class)->hideWhenCreating()
+                ->nullable(),
         ];
     }
 

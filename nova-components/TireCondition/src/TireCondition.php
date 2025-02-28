@@ -20,30 +20,30 @@ class TireCondition extends Field
     /**
      * The key of the rear left tire condition
      *
-     * @var \App\Models\TireCondition
+     * @var \App\Models\TireCondition|null
      */
-    public \App\Models\TireCondition $rearLeftTireCondition;
+    public \App\Models\TireCondition|null $rearLeftTireCondition;
 
     /**
      * The key of the rear right tire condition
      *
-     * @var \App\Models\TireCondition
+     * @var \App\Models\TireCondition|null
      */
-    public \App\Models\TireCondition $rearRightTireCondition;
+    public \App\Models\TireCondition|null $rearRightTireCondition;
 
     /**
      * The key of the front left tire condition
      *
-     * @var \App\Models\TireCondition
+     * @var \App\Models\TireCondition|null
      */
-    public \App\Models\TireCondition $frontLeftTireCondition;
+    public \App\Models\TireCondition|null $frontLeftTireCondition;
 
     /**
      * The key of the front right tire condition
      *
-     * @var \App\Models\TireCondition
+     * @var \App\Models\TireCondition|null
      */
-    public \App\Models\TireCondition $frontRightTireCondition;
+    public \App\Models\TireCondition|null $frontRightTireCondition;
 
 
     /**

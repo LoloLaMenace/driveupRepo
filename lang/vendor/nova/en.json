@@ -518,7 +518,7 @@
     "Location Vehicle" : "Location vehicle",
     "Chassis Number" : "Chassis number",
     "Last Mileage" : "Last mileage",
-    "Last Statement": "Last statement",
+    "Last Statement": "Last statement Km",
     "Energy" : "Energy",
     "CO2" : "CO2",
     "Critair" : "Critair",
@@ -532,5 +532,8 @@
     "Contract & Insurance" : "Contract & Insurance",
     "Contract Number" : "Contract Number",
     "Insurer Name" : "Insurer Name",
-    "Driver" : "Driver"
+    "Driver" : "Driver",
+    "Max Mileage" : "Max Mileage",
+    "Attribution Date" : "Attribution Date",
+    "Restitution Date" : "Restitution Date"
 }
